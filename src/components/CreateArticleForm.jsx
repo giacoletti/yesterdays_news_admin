@@ -1,66 +1,57 @@
-import React, { useState } from "react";
-import Articles from "../modules/Articles";
+import React, { useState } from 'react';
+import Articles from '../modules/Articles';
 
 const CreateArticleForm = ({ onCreateMessage }) => {
-  const [title, setTitle] = useState();
-  const [body, setBody] = useState();
-  const [category, setCategory] = useState();
+  const [article, setArticle] = useState({});
 
-  const createArticle = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const success = await Articles.create(title, body, category);
-    createMessage(success);
+    const response = await Articles.create(article);
+    onCreateMessage(response.message);
   };
 
-  function createMessage(success) {
-    if (success) {
-      onCreateMessage("Article was created");
-    } else {
-      onCreateMessage("Something went wrong with the request");
-    }
-  }
+  const handleChange = (e) => {
+    setArticle({
+      ...article,
+      [e.target.name]: e.target.value
+    });
+  };
 
   return (
-    <>
-      <form onSubmit={createArticle}>
-        <label>
-          Title<br></br>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label for="title">Title</label>
+          <br />
           <input
+            name="title"
             type="text"
             data-cy="title-input"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
+            onChange={handleChange}
           />
-        </label>
+        </div>
 
-        <br></br>
-        <label>
-          Article body<br></br>
-          <textarea
-            data-cy="body-input"
-            onChange={(e) => {
-              setBody(e.target.value);
-            }}
-          />
-        </label>
+        <div>
+          <label>Article body</label>
+          <br />
+          <textarea name="body" data-cy="body-input" onChange={handleChange} />
+        </div>
 
-        <br></br>
-        <select
-          data-cy="select-category"
-          onChange={(select) => {
-            setCategory(select.target.value);
-          }}
-        >
-          <option value="News">News</option>
-          <option value="Politics">Politics</option>
-          <option value="Economy">Economy</option>
-          <option value="Sports">Sports</option>
-        </select>
-        <br></br>
+        <div>
+          <select
+            data-cy="select-category"
+            name="category"
+            onChange={handleChange}
+          >
+            <option value="News">News</option>
+            <option value="Politics">Politics</option>
+            <option value="Economy">Economy</option>
+            <option value="Sports">Sports</option>
+          </select>
+        </div>
         <button data-cy="submit-button">Submit</button>
       </form>
-    </>
+    </div>
   );
 };
 
