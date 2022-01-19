@@ -1,9 +1,14 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomeView = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <button data-cy="signup-button">Sign up</button>
+      <button onClick={() => navigate("registration")} data-cy="signup-button">
+        Sign up
+      </button>
     </>
   );
 };
