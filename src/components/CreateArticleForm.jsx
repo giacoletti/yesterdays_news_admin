@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Articles from "../modules/Articles";
 
-const CreateArticleForm = ({ onCreateMessage }) => {
+const CreateArticleForm = (props) => {
+
   const [article, setArticle] = useState({});
+  const [message, setMessage] = useState()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await Articles.create(article);
-    onCreateMessage(response.message);
+    setMessage(response.message);
   };
 
   const handleChange = (e) => {
@@ -19,6 +21,7 @@ const CreateArticleForm = ({ onCreateMessage }) => {
 
   return (
     <>
+      {message && <h1 data-cy="message-box">{message}</h1>}
       <div>
         <form onSubmit={handleSubmit}>
           <div>
