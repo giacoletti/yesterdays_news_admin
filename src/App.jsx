@@ -10,7 +10,7 @@ const App = () => {
       <h1 data-cy="header">Yesterdays News Admin</h1>
       <Routes>
         <Route path="/" element={<HomeView />} />
-        <Route path="/article/create" element={<CreateArticleView />} />
+        <Route path="article/create" element={<CreateArticleView />} />
       </Routes>
     </>
   );

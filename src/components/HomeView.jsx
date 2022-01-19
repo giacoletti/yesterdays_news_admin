@@ -2,7 +2,9 @@ import React from 'react';
 
 const HomeView = () => {
   return (
-    <h1>Hello home</h1>
+    <>
+      <button data-cy="signup-button">Sign up</button>
+    </>
   );
 };
 
