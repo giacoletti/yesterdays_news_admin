@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "name": "Thomas Ochman",
+    "email": "thomas@mail.com",
+    "provider": "email",
+    "uid": "thomas@mail.com",
+    "allow_password_change": false,
+    "role": "journalist"
+  }
+}
