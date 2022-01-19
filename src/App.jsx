@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import CreateArticleForm from "./components/CreateArticleForm";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import CreateArticleView from "./components/CreateArticleView";
+import HomeView from "./components/HomeView";
 
 const App = () => {
-  const [message, setMessage] = useState();
 
   return (
     <>
       <h1 data-cy="header">Yesterdays News Admin</h1>
-      <div data-cy="message-box">{message}</div>
-      <CreateArticleForm onCreateMessage={setMessage} />
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="/article/create" element={<CreateArticleView />} />
+      </Routes>
     </>
   );
 };
