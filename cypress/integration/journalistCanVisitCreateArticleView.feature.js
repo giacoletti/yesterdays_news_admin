@@ -1,6 +1,6 @@
-describe("Journalist can visit the application", () => {
+describe("Journalist can visit create article view", () => {
   before(() => {
-    cy.visit("/");
+    cy.visit("article/create");
   });
 
   it("is expected to display Yesterday News Admin Header", () => {

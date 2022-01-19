@@ -53,6 +53,6 @@ describe("A user that visits our application wants to register an account", () =
   it("is expected to display a register button", () => {
     cy.get("[data-cy=register-button]")
       .should("be.visible")
-      .and("contain.text","Register")
+      .and("contain.text", "Register");
   });
 });

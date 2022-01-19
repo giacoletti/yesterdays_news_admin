@@ -56,7 +56,7 @@ const RegistrationForm = () => {
         </div>
         <button data-cy="register-button">Register</button>
       </form>
-      <div data-cy="message-box">{message}</div>
+      <div data-cy="flash-message">{message}</div>
     </div>
   );
 };
