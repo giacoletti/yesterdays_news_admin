@@ -1,9 +1,9 @@
 import auth from "./auth";
 
 const Authentification = {
-  async login(email, password) {
+  async logIn(email, password) {
     try {
-      const { data } = await auth.login({
+      const { data } = await auth.logIn({
         email: email,
         password: password,
       });
