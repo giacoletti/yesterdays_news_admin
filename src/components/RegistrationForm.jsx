@@ -15,6 +15,7 @@ const RegistrationForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await Authentication.signUp(
+      signupForm.name,
       signupForm.email,
       signupForm.password,
       signupForm.conf_password
@@ -36,13 +37,15 @@ const RegistrationForm = () => {
         </div>
         <div>
           <label data-cy="email-label">Email:</label>
-          <input onChange={handleChange} name="email" data-cy="email-input" />
+          <input onChange={handleChange} type="email"
+            name="email" data-cy="email-input" />
         </div>
         <div>
           <label data-cy="password-label">Password:</label>
           <input
             onChange={handleChange}
             name="password"
+            type="password"
             data-cy="password-input"
           />
         </div>
@@ -51,6 +54,7 @@ const RegistrationForm = () => {
           <input
             onChange={handleChange}
             name="conf_password"
+            type="password"
             data-cy="conf-password-input"
           />
         </div>
