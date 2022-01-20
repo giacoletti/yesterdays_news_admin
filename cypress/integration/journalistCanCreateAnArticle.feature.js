@@ -4,7 +4,7 @@ describe("Journalist can fill create article form and submit", () => {
     cy.intercept("POST", "/api/articles", {
       fixture: "create_response.json",
     }).as("getArticle");
-    cy.visit("/");
+    cy.visit("/article/create");
     cy.get("[data-cy=title-input]").type("Vikings ate pizza");
     cy.get("[data-cy=body-input]").type(
       "New findings on Björkö shows that Vikings enjoyed Pineapple pizza"
