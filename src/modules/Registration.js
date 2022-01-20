@@ -1,6 +1,6 @@
-import auth from '../modules/auth';
+import auth from './auth';
 
-const Authentication = {
+const Registration = {
   async signUp(name, email, password, password_confirmation){
     try {
       const { data } = await auth.signUp({
@@ -17,4 +17,4 @@ const Authentication = {
 
 }
 
-export default Authentication;
+export default Registration;
