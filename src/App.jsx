@@ -7,7 +7,6 @@ import RegistrationForm from "./components/RegistrationForm";
 const App = () => {
   return (
     <>
-      <h1 data-cy="header">Yesterdays News Admin</h1>
       <Routes>
         <Route path="registration" element={<RegistrationForm />} />
         <Route path="/" element={<HomeView />} />
