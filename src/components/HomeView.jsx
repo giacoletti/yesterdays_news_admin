@@ -17,7 +17,7 @@ const HomeView = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await Authentification.logIn(
+    const response = await auth.signIn(
       userData.email,
       userData.password
     );
@@ -59,6 +59,7 @@ const HomeView = () => {
       <button onClick={() => navigate("registration")} data-cy="signup-button">
         Sign up
       </button>
+      <div data-cy="login-flash-message">{message}</div>
     </>
   );
 };

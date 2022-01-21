@@ -20,7 +20,6 @@ const RegistrationForm = () => {
       signupForm.password,
       signupForm.conf_password
     );
-    debugger;
     if (response.status === "success") {
       setMessage(response.status);
     } else {
