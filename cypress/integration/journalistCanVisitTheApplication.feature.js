@@ -1,38 +1,51 @@
-describe("Journalist can visit the application", () => {
-  before(() => {
-    cy.visit("/");
+describe("Journalist attempts to use the platform", () => {
+  describe('by logging in with valid credentials', () => {
+    before(() => {
+      cy.intercept("POST", "/api/auth/sign_in", {
+        fixture: "authenticated_journalist_response.json",
+      }).as('authenticateRequest');
+      cy.intercept("GET", "/api/auth/validate_token", {
+        fixture: "authenticated_journalist_response.json",
+        headers: { uid: "thomas@craft.com", token: "12344556789" },
+      }).as('validateTokenRequest');
+      cy.visit("/");
+
+      // let's log in the user by clicking on CTA "Log in"
+      cy.get('[data-cy=authenticate]').contains('Log in').click()
+      cy.get("[data-cy=email-field]").type("thomas@craft.com");
+      cy.get("[data-cy=password-field]").type("password");
+      cy.get("[data-cy=login-button]").click();
+
+    });
+
+    it('is expected to make an authentication request to API', () => {
+      cy.wait('@authenticateRequest').its('response.statusCode').should('eq', 200);
+    });
+
+    it('is expected to display a welcome message', () => {
+      cy.get("[data-cy=flash-message]").should("contain.text", "Welcome Thomas Ochman!");
+    });
+    
   });
 
-  it("is expected to display Yesterday News Admin Header", () => {
-    cy.get("[data-cy=header]").should("contain.text", "Yesterdays News Admin");
-  });
+  describe.only('but fails to authenticate', () => {
+    before(() => {
+      cy.intercept("POST", "/api/auth/sign_in", {
+        body: { success: false, errors: ["Invalid login credentials. Please try again."]},
+        statusCode: 401
+      }).as('authenticateRequest');
+      cy.visit("/");
+      // cy.window().its('localStorage').invoke('setItem','foo','bar')
 
-  it('is expected to display a "Title" label', () => {
-    cy.get("[data-cy=title-label]")
-      .should("contain.text", "Title").and("be.visible");
-  });
+       // let's log in the user by clicking on CTA "Log in"
+      cy.get('[data-cy=authenticate]').contains('Log in').click()
+      cy.get("[data-cy=email-field]").type("thomas@craft.com");
+      cy.get("[data-cy=password-field]").type("wrong");
+      cy.get("[data-cy=login-button]").click();
+    });
 
-  it("is expected to display Title input field", () => {
-    cy.get("[data-cy=title-input]").should("be.visible");
-  });
-
-  it('is expected to display a "Article Body" label', () => {
-    cy.get("[data-cy=body-label]")
-      .should("contain.text", "Article body").and("be.visible");
-  });
-
-  it("is expected to display Article Boby text area", () => {
-    cy.get("[data-cy=body-input]").should("be.visible");
-  });
-
-  it("is expected to display category select", () => {
-    cy.get("[data-cy=category-select]")
-      .should("contain.text", "--select category--")
-      .and("be.visible");
-  });
-
-  it("is expected to display Article Boby text area", () => {
-    cy.get("[data-cy=submit-button]")
-      .should("contain.text", "Submit").and("be.visible");
+    it('is expected to display an error message', () => {
+      cy.get("[data-cy=flash-message]").should("contain.text", "Invalid login credentials. Please try again.");
+    });
   });
 });

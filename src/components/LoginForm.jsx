@@ -7,11 +7,15 @@ const LoginForm = () => {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
   const handleSubmission = async () => {
-    const credentials = await auth.signIn(email, password);
-    if (credentials.status === "success") {
-      navigate("/", {
-        state: { flash: `Welcome ${credentials.data.name}!`, currentUser: credentials.data },
-      });
+    try {
+      const credentials = await auth.signIn(email, password);
+      if (credentials.status === "success") {
+        navigate("/", {
+          state: { flash: `Welcome ${credentials.data.name}!`, currentUser: credentials.data },
+        });
+      }
+    } catch (error) {
+      navigate('/', {state: { flash: error.response.data.errors }});
     }
   };
 
