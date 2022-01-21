@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Authentication from "../modules/Authentication";
+import { useSelector, useDispatch } from 'react-redux';
 
 const HomeView = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const { errorMessage } = useSelector(state => state);
   const [userData, setUserData] = useState({});
-  const [message, setMessage] = useState();
 
   const handleChange = (event) => {
     setUserData({
@@ -17,15 +18,11 @@ const HomeView = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await Authentication.signIn(
+    dispatch(Authentication.signIn(
       userData.email,
       userData.password
-    );
-    if (response.status === "success") {
-      setMessage(response.status);
-    } else {
-      setMessage(response.message);
-    }
+    ));
+    
   };
 
   return (
@@ -58,7 +55,7 @@ const HomeView = () => {
       <button onClick={() => navigate("registration")} data-cy="signup-button">
         Sign up
       </button>
-      <div data-cy="login-flash-message">{message}</div>
+      <div data-cy="flash-message">{errorMessage}</div>
     </>
   );
 };

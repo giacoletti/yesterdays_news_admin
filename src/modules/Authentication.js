@@ -1,7 +1,7 @@
 import auth from './auth';
 
 const Authentication = {
-  async signUp(name, email, password, password_confirmation){
+  async signUp(name, email, password, password_confirmation) {
     try {
       const { data } = await auth.signUp({
         name: name,
@@ -14,17 +14,21 @@ const Authentication = {
       return error;
     }
   },
-  async signIn(email, password) {
-    try {
-      const { data } = await auth.signIn({
-        email: email,
-        password: password,
-      });
-      return data;
-    } catch (error) {
-      return error;
-    }
+  signIn(email, password) {
+    return async (dispatch, navigate) => {
+      try {
+        const credentials = await auth.signIn(email, password);
+        debugger;
+        // return credentials;
+        navigate("/dashboard", {
+          state: { flash: `Welcome random!`, currentUser: credentials.data },
+        });
+      } catch (error) {
+        debugger;
+        dispatch({ type: 'SET_ERROR_MESSAGE', payload: error.response.data.errors });
+      }
+    };
   }
-}
+};
 
 export default Authentication;
