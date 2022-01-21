@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Authentification from "../modules/Authentification";
+import Authentication from "../modules/Authentication";
 
 const HomeView = () => {
   const navigate = useNavigate();
@@ -17,11 +17,10 @@ const HomeView = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await auth.signIn(
+    const response = await Authentication.signIn(
       userData.email,
       userData.password
     );
-    debugger;
     if (response.status === "success") {
       setMessage(response.status);
     } else {

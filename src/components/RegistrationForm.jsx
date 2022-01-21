@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Registration from "../modules/Registration";
+import Authentication from "../modules/Authentication";
 
 const RegistrationForm = () => {
   const [signupForm, setSignupForm] = useState({});
@@ -14,7 +14,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await Registration.signUp(
+    const response = await Authentication.signUp(
       signupForm.name,
       signupForm.email,
       signupForm.password,
