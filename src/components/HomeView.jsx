@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import Authentication from "../modules/Authentication";
 
 const HomeView = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { errorMessage } = useSelector(state => state);
+  const { errorMessage } = useSelector((state) => state);
   const [userData, setUserData] = useState({});
 
   const handleChange = (event) => {
     setUserData({
       ...userData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
 
@@ -21,15 +21,17 @@ const HomeView = () => {
       userData.email,
       userData.password
     );
-    if(response.status === 'success'){
-      dispatch({ type: 'SET_WELCOME_MESSAGE', payload: `Welcome ${response.data.name}!` });
-      dispatch({ type: 'SET_CURRENT_USER', payload: response.data });
-      navigate('dashboard', {
-        state: { flash: `Welcome ${response.data.name}!`, currentUser: response.data },
+    if (response.status === "success") {
+      dispatch({ type: "SET_CURRENT_USER", payload: response.data });
+      navigate("dashboard", {
+        state: {
+          flash: `Welcome ${response.data.name}!`,
+          currentUser: response.data
+        }
       });
     } else {
       dispatch({
-        type: 'SET_ERROR_MESSAGE',
+        type: "SET_ERROR_MESSAGE",
         payload: response
       });
     }
@@ -56,7 +58,9 @@ const HomeView = () => {
           data-cy="login-password-input"
         />
       </div>
-      <button onClick={handleSubmit} data-cy="login-button">Login</button>
+      <button onClick={handleSubmit} data-cy="login-button">
+        Login
+      </button>
       <button onClick={() => navigate("registration")} data-cy="signup-button">
         Sign up
       </button>

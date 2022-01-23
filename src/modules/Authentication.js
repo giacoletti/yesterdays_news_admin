@@ -1,4 +1,4 @@
-import auth from './auth';
+import auth from "./auth";
 
 const Authentication = {
   async signUp(name, email, password, password_confirmation) {
