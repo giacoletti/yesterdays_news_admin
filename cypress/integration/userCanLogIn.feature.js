@@ -21,6 +21,11 @@ describe("A journalist is able to login to use the platform", () => {
     it('is expected to display a welcome message', () => {
       cy.get("[data-cy=flash-message]").should("contain.text", "Welcome John Skoglund!");
     });
+
+    it('is expected to display "Create new article" button', () => {
+      cy.get('[data-cy=create-article-btn]').should('contain.text', 'Create new article')
+        .and('be.visible');
+    });
   });
   describe("or can't access the platform without valid credentials", () => {
     before(() => {

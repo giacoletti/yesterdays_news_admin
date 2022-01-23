@@ -56,12 +56,7 @@ const HomeView = () => {
           data-cy="login-password-input"
         />
       </div>
-      <input
-        onClick={handleSubmit}
-        type="button"
-        value="Login"
-        data-cy="login-button"
-      />
+      <button onClick={handleSubmit} data-cy="login-button">Login</button>
       <button onClick={() => navigate("registration")} data-cy="signup-button">
         Sign up
       </button>

@@ -23,7 +23,7 @@ const RegistrationForm = () => {
     if (response.status === "success") {
       setMessage(response.status);
     } else {
-      setMessage(response.response.data.errors);
+      setMessage(response);
     }
   };
   

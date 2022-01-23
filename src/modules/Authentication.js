@@ -11,7 +11,7 @@ const Authentication = {
       });
       return data;
     } catch (error) {
-      return error;
+      return error.response?.data.errors.full_messages || error.message;
     }
   },
   async signIn(email, password) {
