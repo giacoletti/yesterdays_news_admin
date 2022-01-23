@@ -14,20 +14,13 @@ const Authentication = {
       return error;
     }
   },
-  signIn(email, password) {
-    return async (dispatch, navigate) => {
-      try {
-        const credentials = await auth.signIn(email, password);
-        debugger;
-        // return credentials;
-        navigate("/dashboard", {
-          state: { flash: `Welcome random!`, currentUser: credentials.data },
-        });
-      } catch (error) {
-        debugger;
-        dispatch({ type: 'SET_ERROR_MESSAGE', payload: error.response.data.errors });
-      }
-    };
+  async signIn(email, password) {
+    try {
+      const response = await auth.signIn(email, password);
+      return response;
+    } catch (error) {
+      return error.response.data;
+    }
   }
 };
 

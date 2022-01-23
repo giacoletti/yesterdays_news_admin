@@ -1,8 +1,8 @@
 describe("A journalist is able to login to use the platform", () => {
-  describe.only('by using valid credentials', () => {
+  describe('by using valid credentials', () => {
     before(() => {
       cy.intercept("POST", "api/auth/sign_in", {
-        fixture: "login_successful.json",
+        fixture: "authenticated_journalist_response.json",
       }).as('authenticateRequest');
       cy.intercept("GET", "/api/auth/validate_token", {
         fixture: "authenticated_journalist_response.json",
