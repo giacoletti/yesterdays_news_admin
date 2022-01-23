@@ -1,7 +1,7 @@
-import auth from '../modules/auth';
+import auth from "./auth";
 
 const Authentication = {
-  async signUp(name, email, password, password_confirmation){
+  async signUp(name, email, password, password_confirmation) {
     try {
       const { data } = await auth.signUp({
         name: name,
@@ -11,10 +11,17 @@ const Authentication = {
       });
       return data;
     } catch (error) {
-      return error;
+      return error.response?.data.errors.full_messages || error.message;
+    }
+  },
+  async signIn(email, password) {
+    try {
+      const response = await auth.signIn(email, password);
+      return response;
+    } catch (error) {
+      return error.response?.data.errors || error.message;
     }
   }
-
-}
+};
 
 export default Authentication;

@@ -10,10 +10,10 @@ const CreateArticleForm = ({ onCreateMessage }) => {
     onCreateMessage(response.message);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (event) => {
     setArticle({
       ...article,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 

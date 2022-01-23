@@ -3,13 +3,10 @@ describe("Journalist can visit create article view", () => {
     cy.visit("article/create");
   });
 
-  it("is expected to display Yesterday News Admin Header", () => {
-    cy.get("[data-cy=header]").should("contain.text", "Yesterdays News Admin");
-  });
-
   it('is expected to display a "Title" label', () => {
     cy.get("[data-cy=title-label]")
-      .should("contain.text", "Title").and("be.visible");
+      .should("contain.text", "Title")
+      .and("be.visible");
   });
 
   it("is expected to display Title input field", () => {
@@ -18,7 +15,8 @@ describe("Journalist can visit create article view", () => {
 
   it('is expected to display a "Article Body" label', () => {
     cy.get("[data-cy=body-label]")
-      .should("contain.text", "Article body").and("be.visible");
+      .should("contain.text", "Article body")
+      .and("be.visible");
   });
 
   it("is expected to display Article Boby text area", () => {
@@ -33,6 +31,7 @@ describe("Journalist can visit create article view", () => {
 
   it("is expected to display Article Boby text area", () => {
     cy.get("[data-cy=submit-button]")
-      .should("contain.text", "Submit").and("be.visible");
+      .should("contain.text", "Submit")
+      .and("be.visible");
   });
 });

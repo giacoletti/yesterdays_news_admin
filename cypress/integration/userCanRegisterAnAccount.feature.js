@@ -22,7 +22,7 @@ describe("A user is able to register an account as journalist", () => {
   describe("if password mismatch", () => {
     before(() => {
       cy.intercept("POST", "api/auth", {
-        fixture: "registration_password_mismatch.json",
+        fixture: "registration_password_mismatch.json", statusCode: 401
       });
 
       cy.visit("registration");
@@ -35,7 +35,7 @@ describe("A user is able to register an account as journalist", () => {
 
     it("is expected to display an error message", () => {
       cy.get("[data-cy=flash-message]")
-        .should("contain.text", "Password must match")
+        .should("contain.text", "Password confirmation doesn't match Password")
         .and("be.visible");
     });
   });

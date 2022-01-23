@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Authentication from '../modules/Authentication';
+import React, { useState } from "react";
+import Authentication from "../modules/Authentication";
 
 const RegistrationForm = () => {
   const [signupForm, setSignupForm] = useState({});
@@ -8,7 +8,7 @@ const RegistrationForm = () => {
   const handleChange = (event) => {
     setSignupForm({
       ...signupForm,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -20,12 +20,13 @@ const RegistrationForm = () => {
       signupForm.password,
       signupForm.conf_password
     );
-    if (response.status === 'success') {
+    if (response.status === "success") {
       setMessage(response.status);
     } else {
-      setMessage(response.message);
+      setMessage(response);
     }
   };
+  
 
   return (
     <div>
@@ -37,8 +38,12 @@ const RegistrationForm = () => {
         </div>
         <div>
           <label data-cy="email-label">Email:</label>
-          <input onChange={handleChange} type="email"
-            name="email" data-cy="email-input" />
+          <input
+            onChange={handleChange}
+            type="email"
+            name="email"
+            data-cy="email-input"
+          />
         </div>
         <div>
           <label data-cy="password-label">Password:</label>

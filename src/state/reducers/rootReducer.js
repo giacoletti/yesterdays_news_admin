@@ -1,5 +1,19 @@
 const rootReducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case "SET_ERROR_MESSAGE":
+      return {
+        ...state,
+        errorMessage: action.payload
+      };
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: action.payload
+      };
+
+    default:
+      return state;
+  }
 };
 
 export default rootReducer;
