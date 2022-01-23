@@ -1,16 +1,8 @@
 import JtockAuth from "j-tockauth";
-
-let hostURL;
-
-if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-  hostURL = "http://localhost:3000";
-} else {
-  hostURL = "https://yesterdays-news-api.herokuapp.com";
-}
+import apiURL from "./apiURL";
 
 const auth = new JtockAuth({
-  host: hostURL,
-  prefixUrl: "/api",
+  host: apiURL,
   debug: false,
 });
 
