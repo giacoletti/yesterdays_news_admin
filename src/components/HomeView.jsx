@@ -23,12 +23,7 @@ const HomeView = () => {
     );
     if (response.status === "success") {
       dispatch({ type: "SET_CURRENT_USER", payload: response.data });
-      navigate("dashboard", {
-        state: {
-          flash: `Welcome ${response.data.name}!`,
-          currentUser: response.data
-        }
-      });
+      navigate("dashboard");
     } else {
       dispatch({
         type: "SET_ERROR_MESSAGE",
