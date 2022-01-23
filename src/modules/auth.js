@@ -1,9 +1,9 @@
 import JtockAuth from "j-tockauth";
- 
+import apiURL from "./apiURL";
+
 const auth = new JtockAuth({
-  host: "http://localhost:3000",
-  prefixUrl: "/api",
-  debug: false
+  host: apiURL,
+  debug: false,
 });
- 
+
 export default auth;
