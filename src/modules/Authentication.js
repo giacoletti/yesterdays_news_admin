@@ -19,7 +19,7 @@ const Authentication = {
       const response = await auth.signIn(email, password);
       return response;
     } catch (error) {
-      return error.response.data;
+      return error.response?.data.errors || error.message;
     }
   }
 };

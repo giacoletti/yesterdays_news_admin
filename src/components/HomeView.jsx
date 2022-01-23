@@ -22,11 +22,15 @@ const HomeView = () => {
       userData.password
     );
     if(response.status === 'success'){
-      navigate('dashboard');
+      dispatch({ type: 'SET_WELCOME_MESSAGE', payload: `Welcome ${response.data.name}!` });
+      dispatch({ type: 'SET_CURRENT_USER', payload: response.data });
+      navigate('dashboard', {
+        state: { flash: `Welcome ${response.data.name}!`, currentUser: response.data },
+      });
     } else {
       dispatch({
         type: 'SET_ERROR_MESSAGE',
-        payload: response.errors
+        payload: response
       });
     }
   };

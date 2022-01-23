@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
+  const { welcomeMessage } = useSelector(state => state);
+
   return (
-    <h1>Welcome</h1>
+    <h1 data-cy="flash-message">{welcomeMessage}</h1>
   );
 };
 
