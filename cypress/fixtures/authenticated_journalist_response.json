@@ -1,5 +1,5 @@
 {
-  "status": "success",
+  "success": true,
   "data": {
     "email": "johnskoglung@test.com",
     "uid": "johnskoglung@test.com",
