@@ -7,7 +7,7 @@ const CreateArticleForm = ({ onCreateMessage }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await Articles.create(article);
-    onCreateMessage(response.message);
+    onCreateMessage(response);
   };
 
   const handleChange = (event) => {
