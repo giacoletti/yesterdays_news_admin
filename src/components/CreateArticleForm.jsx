@@ -51,10 +51,10 @@ const CreateArticleForm = ({ onCreateMessage }) => {
               onChange={handleChange}
             >
               <option value="">--select category--</option>
-              <option value="News">News</option>
-              <option value="Politics">Politics</option>
-              <option value="Economy">Economy</option>
-              <option value="Sports">Sports</option>
+              <option value="news">News</option>
+              <option value="politics">Politics</option>
+              <option value="economy">Economy</option>
+              <option value="sports">Sports</option>
             </select>
           </div>
           <button data-cy="submit-button">Submit</button>
