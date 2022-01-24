@@ -21,7 +21,7 @@ const HomeView = () => {
       userData.email,
       userData.password
     );
-    if (response.status === "success") {
+    if (response.success) {
       dispatch({ type: "SET_CURRENT_USER", payload: response.data });
       navigate("dashboard");
     } else {
