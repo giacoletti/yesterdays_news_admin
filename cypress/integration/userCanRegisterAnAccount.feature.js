@@ -4,7 +4,8 @@ describe("A user is able to register an account as journalist", () => {
       cy.intercept("POST", "api/auth", {
         fixture: "registration_successful_response.json",
       });
-      cy.visit("registration");
+      cy.visit("/");
+      cy.get("[data-cy=signup-button]").click();
       cy.get("[data-cy=name-input]").type("John Skoglund");
       cy.get("[data-cy=email-input]").type("johnskoglung@test.com");
       cy.get("[data-cy=password-input]").type("1234567890");
@@ -62,7 +63,8 @@ describe("A user is able to register an account as journalist", () => {
         statusCode: 401,
       });
 
-      cy.visit("registration");
+      cy.visit("/");
+      cy.get("[data-cy=signup-button]").click();
       cy.get("[data-cy=name-input]").type("John Skoglund");
       cy.get("[data-cy=email-input]").type("johnskoglung@test.com");
       cy.get("[data-cy=password-input]").type("1234567890");
@@ -76,5 +78,4 @@ describe("A user is able to register an account as journalist", () => {
         .and("be.visible");
     });
   });
-  
 });
