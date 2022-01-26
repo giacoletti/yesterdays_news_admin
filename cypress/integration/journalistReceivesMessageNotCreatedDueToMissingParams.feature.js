@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("Journalist can receive an error message if article is not created due to missing params", () => {
   describe("Missing title", () => {
     before(() => {
