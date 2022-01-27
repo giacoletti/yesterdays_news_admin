@@ -11,6 +11,7 @@ const HomeView = () => {
   const [userData, setUserData] = useState({});
 
   const handleChange = (event) => {
+    debugger;
     setUserData({
       ...userData,
       [event.target.name]: event.target.value
@@ -54,7 +55,7 @@ const HomeView = () => {
       <Typography
         variant="h4"
         gutterBottom
-        sx={{ margin: "10px 10px" }}
+        style={{ margin: "30px 10px" }}
         data-cy="home-view-header"
       >
         Welcome to the admin page
@@ -63,6 +64,7 @@ const HomeView = () => {
         data-cy="login-email-input"
         label="Email"
         size="small"
+        name="email"
         onChange={handleChange}
         variant="outlined"
       />
@@ -70,6 +72,7 @@ const HomeView = () => {
         data-cy="login-password-input"
         label="Password"
         size="small"
+        name="password"
         onChange={handleChange}
         variant="outlined"
       />
