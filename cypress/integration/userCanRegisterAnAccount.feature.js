@@ -14,26 +14,26 @@ describe("A user is able to register an account as journalist", () => {
     });
 
     it('is expected to display "Your name" label', () => {
-      cy.get("[data-cy=name-label]")
-        .should("contain.text", "Your name:")
+      cy.get("[data-cy=name-input]")
+        .should("contain.text", "Your name")
         .and("be.visible");
     });
 
     it('is expected to display "Email" label', () => {
-      cy.get("[data-cy=email-label]")
-        .should("contain.text", "Email:")
+      cy.get("[data-cy=email-input]")
+        .should("contain.text", "Email")
         .and("be.visible");
     });
 
     it('is expected to display "Password" label', () => {
-      cy.get("[data-cy=password-label]")
-        .should("contain.text", "Password:")
+      cy.get("[data-cy=password-input]")
+        .should("contain.text", "Password")
         .and("be.visible");
     });
 
     it('is expected to display "Confirm password" label', () => {
-      cy.get("[data-cy=conf-password-label]")
-        .should("contain.text", "Confirm password:")
+      cy.get("[data-cy=conf-password-input]")
+        .should("contain.text", "Confirm password")
         .and("be.visible");
     });
 
