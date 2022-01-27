@@ -35,7 +35,8 @@ describe("An article", () => {
         "New findings on Björkö shows that Vikings enjoyed Pineapple pizza"
       );
       cy.get("[data-cy=category-select").select("News");
-      cy.get("[data-cy=submit-button").click();
+      cy.get('[data-cy=image-input]').attachFile('./dummy.png');
+      cy.get("[data-cy=submit-button]").click();
     });
 
     it("is expected to make a POST request to the API", () => {
