@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Authentication from "../modules/Authentication";
+import { Typography, TextField, Box, Button, Alert } from "@mui/material";
 
 const HomeView = () => {
   const navigate = useNavigate();
@@ -29,38 +30,69 @@ const HomeView = () => {
         type: "SET_ERROR_MESSAGE",
         payload: response
       });
+      setTimeout(() =>
+        dispatch({
+          type: "SET_ERROR_MESSAGE",
+          payload: ''
+        }),
+        4000
+      );
     }
   };
 
   return (
-    <div>
-      <h3 data-cy="home-view-header">Welcome to the admin page</h3>
-      <div>
-        <label data-cy="login-email-label">Email:</label>
-        <input
-          onChange={handleChange}
-          name="email"
-          type="text"
-          data-cy="login-email-input"
-        />
-      </div>
-      <div>
-        <label data-cy="login-password-label">Password:</label>
-        <input
-          onChange={handleChange}
-          name="password"
-          type="password"
-          data-cy="login-password-input"
-        />
-      </div>
-      <button onClick={handleSubmit} data-cy="login-button">
+    <Box
+      component="form"
+      sx={{
+        "& > :not(style)": { m: 1, width: "25ch" },
+        boxShadow: 3,
+        maxWidth: "500px"
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <Typography
+        variant="h4"
+        gutterBottom
+        sx={{ margin: "10px 10px" }}
+        data-cy="home-view-header"
+      >
+        Welcome to the admin page
+      </Typography>
+      <TextField
+        data-cy="login-email-input"
+        label="Email"
+        size="small"
+        onChange={handleChange}
+        variant="outlined"
+      />
+      <TextField
+        data-cy="login-password-input"
+        label="Password"
+        size="small"
+        onChange={handleChange}
+        variant="outlined"
+      />
+      <Button variant="contained" onClick={handleSubmit} data-cy="login-button">
         Login
-      </button>
-      <button onClick={() => navigate("registration")} data-cy="signup-button">
+      </Button>
+      <Button
+        variant="outlined"
+        onClick={() => navigate("registration")}
+        data-cy="signup-button"
+      >
         Sign up
-      </button>
-      <div data-cy="flash-message">{errorMessage}</div>
-    </div>
+      </Button>
+      {errorMessage && (
+        <Alert
+          data-cy="flash-message"
+          severity="error"
+          sx={{ margin: "20px 10" }}
+        >
+          {errorMessage}
+        </Alert>
+      )}
+    </Box>
   );
 };
 
