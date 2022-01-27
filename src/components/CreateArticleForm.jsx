@@ -7,12 +7,20 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  Typography
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { styled } from "@mui/material/styles";
+
+const Input = styled("input")({
+  display: "none"
+});
 
 const CreateArticleForm = ({ onCreateMessage }) => {
   const [article, setArticle] = useState({});
+  const [fileName, setFileName] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,6 +39,7 @@ const CreateArticleForm = ({ onCreateMessage }) => {
   const handleImage = async (event) => {
     event.preventDefault();
     const file = event.target.files[0];
+    file.name && setFileName(file.name);
     const encodedFile = await utils.imageEncoder(file);
     setArticle({ ...article, image: encodedFile });
   };
@@ -74,14 +83,27 @@ const CreateArticleForm = ({ onCreateMessage }) => {
         </Select>
       </FormControl>
       <div>
-        <input
-          accept="image/*"
-          type="file"
-          onChange={handleImage}
-          name="image"
-          alt="foo"
-          data-cy="image-input"
-        />
+        <label htmlFor="contained-button-file">
+          <Input
+            data-cy="image-input"
+            accept="image/*"
+            id="contained-button-file"
+            onChange={handleImage}
+            name="image"
+            multiple
+            type="file"
+          />
+          <Button
+            variant="contained"
+            component="span"
+            endIcon={<PhotoCamera />}
+          >
+            Upload
+          </Button>
+        </label>
+        <Typography variant="caption" gutterBottom style={{ marginLeft: '10px'}}>
+          {fileName}
+        </Typography>
       </div>
       <Button
         variant="contained"
