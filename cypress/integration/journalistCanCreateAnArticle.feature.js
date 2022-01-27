@@ -45,7 +45,7 @@ describe("An article", () => {
         .should("eq", "POST");
     });
 
-    it.only("is expected to display a successful message", () => {
+    it("is expected to display a successful message", () => {
       cy.get("[data-cy=message-box]").should(
         "contain.text",
         "Article succesfully created!"
