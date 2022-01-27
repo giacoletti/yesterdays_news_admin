@@ -9,7 +9,8 @@ describe("Journalist can receive an error message if article is not created due 
       cy.get("[data-cy=body-input]").type(
         "New findings on Björkö shows that Vikings enjoyed Pineapple pizza"
       );
-      cy.get("[data-cy=category-select").select("News");
+      cy.get("[data-cy=category-select]").click();
+      cy.get("[data-cy=news-category]").click();
       cy.get("[data-cy=submit-button").click();
     });
 
@@ -27,7 +28,8 @@ describe("Journalist can receive an error message if article is not created due 
       });
       cy.visit("article/create");
       cy.get("[data-cy=title-input]").type("Vikings ate pizza");
-      cy.get("[data-cy=category-select").select("News");
+      cy.get("[data-cy=category-select]").click();
+      cy.get("[data-cy=news-category]").click();
       cy.get("[data-cy=submit-button").click();
     });
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Authentication from "../modules/Authentication";
+import { Typography, TextField, Box, Button, Alert } from "@mui/material";
 
 const RegistrationForm = () => {
   const [signupForm, setSignupForm] = useState({});
@@ -8,12 +9,11 @@ const RegistrationForm = () => {
   const handleChange = (event) => {
     setSignupForm({
       ...signupForm,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     const response = await Authentication.signUp(
       signupForm.name,
       signupForm.email,
@@ -24,49 +24,76 @@ const RegistrationForm = () => {
       setMessage(response.status);
     } else {
       setMessage(response);
+      setTimeout(() => setMessage(""), 4000);
     }
   };
-  
 
   return (
-    <div>
-      <h3 data-cy="registration-header">Registration form</h3>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label data-cy="name-label">Your name:</label>
-          <input onChange={handleChange} name="name" data-cy="name-input" />
-        </div>
-        <div>
-          <label data-cy="email-label">Email:</label>
-          <input
-            onChange={handleChange}
-            type="email"
-            name="email"
-            data-cy="email-input"
-          />
-        </div>
-        <div>
-          <label data-cy="password-label">Password:</label>
-          <input
-            onChange={handleChange}
-            name="password"
-            type="password"
-            data-cy="password-input"
-          />
-        </div>
-        <div>
-          <label data-cy="conf-password-label">Confirm password:</label>
-          <input
-            onChange={handleChange}
-            name="conf_password"
-            type="password"
-            data-cy="conf-password-input"
-          />
-        </div>
-        <button data-cy="register-button">Register</button>
-      </form>
-      <div data-cy="flash-message">{message}</div>
-    </div>
+    <Box
+      component="form"
+      sx={{
+        "& > :not(style)": { m: 1, width: "25ch" },
+        boxShadow: 3,
+        maxWidth: "500px"
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <Typography
+        variant="h4"
+        gutterBottom
+        style={{ margin: "30px 10px" }}
+        data-cy="registration-header"
+      >
+        Registration form
+      </Typography>
+      <TextField
+        data-cy="name-input"
+        label="Your name"
+        name="name"
+        size="small"
+        onChange={handleChange}
+        variant="outlined"
+      />
+      <TextField
+        data-cy="email-input"
+        label="Email"
+        name="email"
+        size="small"
+        onChange={handleChange}
+        variant="outlined"
+      />
+      <TextField
+        data-cy="password-input"
+        label="Password"
+        name="password"
+        type="password"
+        size="small"
+        onChange={handleChange}
+        variant="outlined"
+      />
+      <TextField
+        data-cy="conf-password-input"
+        label="Confirm password"
+        name="conf_password"
+        type="password"
+        size="small"
+        onChange={handleChange}
+        variant="outlined"
+      />
+      <Button
+        variant="contained"
+        onClick={handleSubmit}
+        data-cy="register-button"
+      >
+        Register
+      </Button>
+      {message && (
+        <Alert data-cy="flash-message" severity="info">
+          {message}
+        </Alert>
+      )}
+    </Box>
   );
 };
 
