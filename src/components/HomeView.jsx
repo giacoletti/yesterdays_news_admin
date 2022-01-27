@@ -11,7 +11,6 @@ const HomeView = () => {
   const [userData, setUserData] = useState({});
 
   const handleChange = (event) => {
-    debugger;
     setUserData({
       ...userData,
       [event.target.name]: event.target.value
@@ -72,6 +71,7 @@ const HomeView = () => {
         data-cy="login-password-input"
         label="Password"
         size="small"
+        type="password"
         name="password"
         onChange={handleChange}
         variant="outlined"
