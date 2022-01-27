@@ -9,6 +9,7 @@ const Articles = {
           title: article.title,
           body: article.body,
           category: article.category,
+          image: article.image
         },
         headers: headers
       });
