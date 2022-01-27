@@ -17,6 +17,26 @@ const CreateArticleForm = ({ onCreateMessage }) => {
     });
   };
 
+  const handleImage = async (event) => {
+    event.preventDefault();
+    const file = event.target.files[0];
+    const encodedFile = await imageEncoder(file);
+    setArticle({ ...article, image: encodedFile });
+  };
+
+  const imageEncoder = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          resolve(reader.result);
+        };
+      }
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
   return (
     <>
       <div>
@@ -57,6 +77,14 @@ const CreateArticleForm = ({ onCreateMessage }) => {
               <option value="sports">Sports</option>
             </select>
           </div>
+          <input
+            accept="image/*"
+            type="file"
+            onChange={handleImage}
+            name="image"
+            alt="foo"
+            data-cy="image-input"
+          />
           <button data-cy="submit-button">Submit</button>
         </form>
       </div>

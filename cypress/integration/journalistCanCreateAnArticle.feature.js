@@ -35,7 +35,8 @@ describe("An article", () => {
         "New findings on Björkö shows that Vikings enjoyed Pineapple pizza"
       );
       cy.get("[data-cy=category-select").select("News");
-      cy.get("[data-cy=submit-button").click();
+      cy.get('[data-cy=image-input]').attachFile('./dummy.png')
+      cy.get("[data-cy=submit-button]").click();
     });
 
     it("is expected to make a POST request to the API", () => {
@@ -44,7 +45,7 @@ describe("An article", () => {
         .should("eq", "POST");
     });
 
-    it("is expected to display a successful message", () => {
+    it.only("is expected to display a successful message", () => {
       cy.get("[data-cy=message-box]").should(
         "contain.text",
         "Article succesfully created!"
