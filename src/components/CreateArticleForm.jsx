@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Articles from "../modules/Articles";
 import utils from "../modules/utils";
 import { TextField, Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 
 const CreateArticleForm = ({ onCreateMessage }) => {
   const [article, setArticle] = useState({});
@@ -76,6 +77,7 @@ const CreateArticleForm = ({ onCreateMessage }) => {
         variant="contained"
         onClick={handleSubmit}
         data-cy="submit-button"
+        endIcon={<SendIcon />}
       >
         Submit
       </Button>
