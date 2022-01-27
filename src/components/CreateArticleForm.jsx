@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import Articles from "../modules/Articles";
 import utils from "../modules/utils";
-import { TextField, Button } from "@mui/material";
-import SendIcon from '@mui/icons-material/Send';
+import {
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
+} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 const CreateArticleForm = ({ onCreateMessage }) => {
   const [article, setArticle] = useState({});
@@ -50,19 +57,22 @@ const CreateArticleForm = ({ onCreateMessage }) => {
         onChange={handleChange}
         variant="outlined"
       />
-      <div>
-        <select
+      <FormControl sx={{ width: "130px" }}>
+        <InputLabel id="category-label">Category</InputLabel>
+        <Select
+          labelId="category-label"
+          style={{ width: "200px" }}
           data-cy="category-select"
-          name="category"
           onChange={handleChange}
+          name="category"
+          label="Category"
         >
-          <option value="">--select category--</option>
-          <option value="news">News</option>
-          <option value="politics">Politics</option>
-          <option value="economy">Economy</option>
-          <option value="sports">Sports</option>
-        </select>
-      </div>
+          <MenuItem data-cy="news-category" value={"news"}>News</MenuItem>
+          <MenuItem data-cy="politics-category" value={"politics"}>Politics</MenuItem>
+          <MenuItem data-cy="economy-category" value={"economy"}>Economy</MenuItem>
+          <MenuItem data-cy="sports-category" value={"sports"}>Sports</MenuItem>
+        </Select>
+      </FormControl>
       <div>
         <input
           accept="image/*"

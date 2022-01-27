@@ -34,7 +34,8 @@ describe("An article", () => {
       cy.get("[data-cy=body-input]").type(
         "New findings on Björkö shows that Vikings enjoyed Pineapple pizza"
       );
-      cy.get("[data-cy=category-select").select("News");
+      cy.get("[data-cy=category-select]").click();
+      cy.get("[data-cy=news-category]").click();
       cy.get('[data-cy=image-input]').attachFile('./dummy.png');
       cy.get("[data-cy=submit-button]").click();
     });
