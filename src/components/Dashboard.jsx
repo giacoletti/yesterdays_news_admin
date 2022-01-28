@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Typography, Button, Paper } from "@mui/material";
-import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 
 const Dashboard = () => {
   const { currentUser } = useSelector((state) => state);
