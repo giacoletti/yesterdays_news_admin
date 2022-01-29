@@ -2,19 +2,20 @@
 describe("Journalist can see his/hers artilces", () => {
   before(() => {
     cy.intercept("POST", "/api/auth/sign_in", {
-      fixture: "authenticated_journalist_response.json",
+      fixture: "authenticated_journalist_response",
     }).as("authenticateRequest");
     cy.intercept("GET", "/api/auth/validate_token", {
-      fixture: "authenticated_journalist_response.json",
-      headers: { uid: "johnskoglung@test.com", token: "12344556789" },
-    });
+      fixture: "authenticated_journalist_response",
+      headers: { uid: "johnskoglund@test.com", token: "12344556789" },
+    }).as("validatedUser");
     cy.intercept("GET", "/api/articles", {
-      fixture: "indexWithJournalistResponse.json",
+      fixture: "indexWithJournalistResponse",
+      headers: { uid: "johnskoglund@test.com", token: "12344556789" },
     }).as("getArticles");
 
     cy.visit("/");
 
-    cy.get("[data-cy=login-email-input]").type("johnskoglung@test.com");
+    cy.get("[data-cy=login-email-input]").type("johnskoglund@test.com");
     cy.get("[data-cy=login-password-input]").type("1234567890");
     cy.get("[data-cy=login-button]").click();
     cy.wait("@authenticateRequest");

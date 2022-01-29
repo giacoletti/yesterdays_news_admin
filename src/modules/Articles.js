@@ -18,6 +18,20 @@ const Articles = {
       return error.response?.data.errors || error.message;
     }
   },
+  async index(currentUser) {
+    try {
+      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
+      const { data } = await api.get("/articles", {
+        params: {
+          user: currentUser.email,
+        },
+        headers: headers,
+      });
+      return data.articles;
+    } catch (error) {
+      return error;
+    }
+  },
 };
 
 export default Articles;
