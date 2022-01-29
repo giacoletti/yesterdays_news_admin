@@ -23,11 +23,11 @@ const Articles = {
       const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
       const { data } = await api.get("/articles", {
         params: {
-          user: currentUser.email,
+          user: currentUser.uid,
         },
         headers: headers,
       });
-      return data.articles;
+      return data;
     } catch (error) {
       return error;
     }
