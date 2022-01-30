@@ -7,14 +7,14 @@ describe("An article", () => {
       }).as("authenticateRequest");
       cy.intercept("GET", "/api/auth/validate_token", {
         fixture: "authenticated_journalist_response.json",
-        headers: { uid: "johnskoglung@test.com", token: "12344556789" },
+        headers: { uid: "johnskoglund@test.com", token: "12344556789" },
       }).as("validateTokenRequest");
       cy.intercept("POST", "/api/articles", {
         fixture: "create_response.json",
       }).as("articleCreateRequest");
       cy.visit("/");
 
-      cy.get("[data-cy=login-email-input]").type("johnskoglung@test.com");
+      cy.get("[data-cy=login-email-input]").type("johnskoglund@test.com");
       cy.get("[data-cy=login-password-input]").type("1234567890");
       cy.get("[data-cy=login-button]").click();
 
@@ -36,7 +36,7 @@ describe("An article", () => {
       );
       cy.get("[data-cy=category-select]").click();
       cy.get("[data-cy=news-category]").click();
-      cy.get('[data-cy=image-input]').attachFile('./dummy.png');
+      cy.get("[data-cy=image-input]").attachFile("./dummy.png");
       cy.get("[data-cy=submit-button]").click();
     });
 
@@ -64,7 +64,7 @@ describe("An article", () => {
         statusCode: 401,
       }).as("authenticateRequest");
       cy.visit("/");
-      cy.get("[data-cy=login-email-input]").type("johnskoglung@test.com");
+      cy.get("[data-cy=login-email-input]").type("johnskoglund@test.com");
       cy.get("[data-cy=login-password-input]").type("1234567890");
       cy.get("[data-cy=login-button]").click();
     });

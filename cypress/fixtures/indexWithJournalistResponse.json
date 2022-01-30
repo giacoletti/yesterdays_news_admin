@@ -1,0 +1,75 @@
+{
+  "articles": [
+    { 
+      "id": 16,
+      "title": "The Doors of Perception",
+      "teaser": "I didn't work hard to make Ruby perfect for everyone, becaus...",
+      "published": "January 28, 2022 12:31",
+      "category": "News",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+      "id": 13,
+      "title": "The World, the Flesh and the Devil",
+      "teaser": "Man is driven to create; I know I really love to create thin...",
+      "published": "January 28, 2022 12:31",
+      "category": "News",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+
+    {
+      "id": 11,
+      "title": "Paths of Glory",
+      "teaser": "Most of the tasks we do are for humans. For example, a tax c...",
+      "published": "January 28, 2022 12:31",
+      "category": "Economy",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+      "id": 10,
+      "title": "The Curious Incident of the Dog in the Night-Time",
+      "teaser": "Imagine you are writing an email. You are in front of the co...",
+      "published": "January 28, 2022 12:31",
+      "category": "Economy",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+      "id": 5,
+      "title": "O Jerusalem!",
+      "teaser": "Most of the tasks we do are for humans. For example, a tax c...",
+      "published": "January 28, 2022 12:31",
+      "category": "Politics",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+      "id": 2,
+      "title": "Surprised by Joy",
+      "teaser": "In our daily lives as programmers, we process text strings a...",
+      "published": "January 28, 2022 12:31",
+      "category": "Sports",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    },
+    {
+      "id": 1,
+      "title": "Mother Night",
+      "teaser": "People are different. People choose different criteria. But ...",
+      "published": "January 28, 2022 12:31",
+      "category": "Sports",
+      "user": "johnskoglund@test.com",
+      "author": "John Skoglund",
+      "image": "https://images.unsplash.com/photo-1578004771849-96788f5354ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    }
+  ]
+}

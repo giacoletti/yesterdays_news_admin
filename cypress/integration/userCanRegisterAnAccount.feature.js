@@ -7,7 +7,7 @@ describe("A user is able to register an account as journalist", () => {
       cy.visit("/");
       cy.get("[data-cy=signup-button]").click();
       cy.get("[data-cy=name-input]").type("John Skoglund");
-      cy.get("[data-cy=email-input]").type("johnskoglung@test.com");
+      cy.get("[data-cy=email-input]").type("johnskoglund@test.com");
       cy.get("[data-cy=password-input]").type("1234567890");
       cy.get("[data-cy=conf-password-input]").type("1234567890");
       cy.get("[data-cy=register-button]").click();
@@ -66,7 +66,7 @@ describe("A user is able to register an account as journalist", () => {
       cy.visit("/");
       cy.get("[data-cy=signup-button]").click();
       cy.get("[data-cy=name-input]").type("John Skoglund");
-      cy.get("[data-cy=email-input]").type("johnskoglung@test.com");
+      cy.get("[data-cy=email-input]").type("johnskoglund@test.com");
       cy.get("[data-cy=password-input]").type("1234567890");
       cy.get("[data-cy=conf-password-input]").type("123434");
       cy.get("[data-cy=register-button]").click();

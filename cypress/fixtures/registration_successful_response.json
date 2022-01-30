@@ -3,9 +3,9 @@
   "data": {
     "id": 2,
     "provider": "email",
-    "uid": "johnskoglung@test.com",
+    "uid": "johnskoglund@test.com",
     "allow_password_change": false,
-    "email": "johnskoglung@test.com",
+    "email": "johnskoglund@test.com",
     "created_at": "2022-01-19T17:34:17.298Z",
     "updated_at": "2022-01-19T17:34:17.387Z"
   }
