@@ -6,13 +6,12 @@ import {
   Button,
   Paper,
   Grid,
-  Card,
-  CardContent,
-  CardActionArea,
   Alert,
+  Container,
 } from "@mui/material";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import Articles from "../modules/Articles";
+import ArticleCard from "./ArticleCard";
 
 const Dashboard = () => {
   const [articles, setArticles] = useState([]);
@@ -35,36 +34,9 @@ const Dashboard = () => {
 
   const userArticles = articles.map((article) => {
     return (
-      <Card
-        data-cy="current-user-articles"
-        sx={{ width: "100%", maxWidth: 700 }}
-      >
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h3" data-cy="article-title">
-              {article.title}
-            </Typography>
-            <Typography
-              gutterBottom
-              variant="subtitle1"
-              data-cy="article-teaser"
-            >
-              {article.teaser}
-            </Typography>
-            <Typography
-              align="left"
-              gutterBottom
-              variant="caption"
-              data-cy="article-created"
-            >
-              {article.published}
-            </Typography>
-            <Typography align="right" data-cy="article-author">
-              {article.author}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Grid item key={article.id} md={12}>
+        <ArticleCard article={article} />
+      </Grid>
     );
   });
 
@@ -89,16 +61,20 @@ const Dashboard = () => {
       </Paper>
       <br></br>
       <Typography variant="h6">{`Your current articles:`}</Typography>
-      <Grid>{userArticles}</Grid>
-      {articles.length === 0 && message && (
-        <Alert
-          data-cy="flesh-message"
-          severity="info"
-          sx={{ margin: "20px 0" }}
-        >
-          {message}
-        </Alert>
-      )}
+      <Container sx={{ padding: "20px 0" }}>
+        <Grid container spacing={4} data-cy="article-collection">
+          {userArticles}
+        </Grid>
+        {articles.length === 0 && message && (
+          <Alert
+            data-cy="flesh-message"
+            severity="info"
+            sx={{ margin: "20px 0" }}
+          >
+            {message}
+          </Alert>
+        )}
+      </Container>
     </>
   );
 };
