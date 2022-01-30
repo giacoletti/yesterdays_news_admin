@@ -2,33 +2,13 @@
 describe("An article", () => {
   describe("can be created by a journalist", () => {
     before(() => {
-      cy.intercept("POST", "/api/auth/sign_in", {
-        fixture: "authenticated_journalist_response.json",
-      }).as("authenticateRequest");
-      cy.intercept("GET", "/api/auth/validate_token", {
-        fixture: "authenticated_journalist_response.json",
-        headers: { uid: "johnskoglund@test.com", token: "12344556789" },
-      }).as("validateTokenRequest");
+      cy.intercept("GET", "/api/articles**", {
+        body: { articles: [] }
+      }).as('emptyResponse');
       cy.intercept("POST", "/api/articles", {
         fixture: "create_response.json",
       }).as("articleCreateRequest");
-      cy.visit("/");
-
-      cy.get("[data-cy=login-email-input]").type("johnskoglund@test.com");
-      cy.get("[data-cy=login-password-input]").type("1234567890");
-      cy.get("[data-cy=login-button]").click();
-
-      it("is expected to make an authentication request to API", () => {
-        cy.wait("@authenticateRequest")
-          .its("response.statusCode")
-          .should("eq", 200);
-      });
-
-      cy.get("[data-cy=flash-message]").should(
-        "contain.text",
-        "Welcome John Skoglund!"
-      );
-
+      cy.authenticateJournalist("johnskoglund@test.com", "1234567890");
       cy.get("[data-cy=create-article-btn]").click();
       cy.get("[data-cy=title-input]").type("Vikings ate pizza");
       cy.get("[data-cy=body-input]").type(

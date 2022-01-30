@@ -10,8 +10,11 @@ const Articles = {
           body: article.body,
           category: article.category,
           image: article.image,
-        },
-        headers: headers,
+          user: headers.uid
+        }
+      },
+      {
+        headers: headers
       });
       return data.message;
     } catch (error) {
