@@ -1,12 +1,12 @@
 {
   "success": true,
   "data": {
-    "email": "johnskoglung@test.com",
-    "uid": "johnskoglung@test.com",
+    "email": "johnskoglund@test.com",
+    "uid": "johnskoglund@test.com",
     "id": 18,
     "provider": "email",
     "allow_password_change": false,
     "name": "John Skoglund",
-    "role": null
+    "role": "journalist"
   }
 }
