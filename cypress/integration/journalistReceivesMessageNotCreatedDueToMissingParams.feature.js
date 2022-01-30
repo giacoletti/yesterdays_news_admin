@@ -7,7 +7,6 @@ describe("Journalist can receive an error message if article is not created due 
       cy.intercept("POST", "/api/articles", {
         fixture: "title_is_missing.json"
       });
-      // cy.visit("article/create");
       cy.get("[data-cy=body-input]")
         .type(
           "New findings on Björkö shows that Vikings enjoyed Pineapple pizza"
