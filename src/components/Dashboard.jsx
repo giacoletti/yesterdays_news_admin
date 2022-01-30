@@ -9,19 +9,24 @@ import {
   Card,
   CardContent,
   CardActionArea,
+  Alert,
 } from "@mui/material";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import Articles from "../modules/Articles";
 
 const Dashboard = () => {
   const [articles, setArticles] = useState([]);
+  const [message, setMessage] = useState();
   const { currentUser } = useSelector((state) => state);
   const navigate = useNavigate();
 
   const fetchArticles = async () => {
     const data = await Articles.index(currentUser);
-    setArticles(data.articles);
-    console.log(articles);
+    if (data.message || data.length === 0) {
+      setMessage(data.message);
+    } else {
+      setArticles(data.articles);
+    }
   };
 
   useEffect(() => {
@@ -30,7 +35,10 @@ const Dashboard = () => {
 
   const userArticles = articles.map((article) => {
     return (
-      <Card data-cy="current-user-articles" sx={{ width: "100%", maxWidth: 700 }}>
+      <Card
+        data-cy="current-user-articles"
+        sx={{ width: "100%", maxWidth: 700 }}
+      >
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h3" data-cy="article-title">
@@ -81,7 +89,16 @@ const Dashboard = () => {
       </Paper>
       <br></br>
       <Typography variant="h6">{`Your current articles:`}</Typography>
-      <Grid >{userArticles}</Grid>
+      <Grid>{userArticles}</Grid>
+      {articles.length === 0 && message && (
+        <Alert
+          data-cy="flesh-message"
+          severity="info"
+          sx={{ margin: "20px 0" }}
+        >
+          {message}
+        </Alert>
+      )}
     </>
   );
 };
