@@ -2,6 +2,9 @@
 describe("Journalist can receive an error message if article is not created due to missing params", () => {
   describe("Missing title", () => {
     before(() => {
+      cy.intercept("GET", "/api/articles**", {
+        body: { articles: [] }
+      }).as('emptyResponse');
       cy.authenticateJournalist("johnskoglund@test.com", "1234567890");
       cy.get("[data-cy=create-article-btn]").click();
       cy.intercept("POST", "/api/articles", {
@@ -23,6 +26,9 @@ describe("Journalist can receive an error message if article is not created due 
   });
   describe("Missing body", () => {
     before(() => {
+      cy.intercept("GET", "/api/articles**", {
+        body: { articles: [] }
+      }).as('emptyResponse');
       cy.authenticateJournalist("johnskoglund@test.com", "1234567890");
       cy.get("[data-cy=create-article-btn]").click();
       cy.intercept("POST", "/api/articles", {
@@ -41,6 +47,9 @@ describe("Journalist can receive an error message if article is not created due 
   });
   describe("Missing category", () => {
     before(() => {
+      cy.intercept("GET", "/api/articles**", {
+        body: { articles: [] }
+      }).as('emptyResponse');
       cy.authenticateJournalist("johnskoglund@test.com", "1234567890");
       cy.get("[data-cy=create-article-btn]").click();
       cy.intercept("POST", "/api/articles", {
