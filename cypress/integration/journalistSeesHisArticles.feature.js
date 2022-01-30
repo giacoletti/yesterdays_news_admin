@@ -64,6 +64,12 @@ describe("Articles ", () => {
           );
         });
     });
+
+    it("is expected to see attached image to article if present", () => {
+      cy.get("[data-cy=current-user-articles]").children().first();
+      cy.get('[data-cy="article-image"]')
+      .attachFile("./dummy.png");
+    });
   });
 
   describe("can't be displayed because the journalist hasn't created any yet", () => {
