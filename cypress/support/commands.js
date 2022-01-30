@@ -24,3 +24,17 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
+
+Cypress.Commands.add('authenticateJournalist', (user, password) => {
+  cy.intercept("POST", "/api/auth/sign_in", {
+    fixture: "authenticated_journalist_response.json",
+  }).as("authenticateRequest");
+  cy.intercept("GET", "/api/auth/validate_token", {
+    fixture: "authenticated_journalist_response.json",
+    headers: { uid: user, token: password },
+  }).as("validateTokenRequest");
+  cy.visit("/");
+  cy.get("[data-cy=login-email-input]").type(user);
+  cy.get("[data-cy=login-password-input]").type(password);
+  cy.get("[data-cy=login-button]").click();
+});
