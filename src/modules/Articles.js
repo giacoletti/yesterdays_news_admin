@@ -20,12 +20,10 @@ const Articles = {
   },
   async index(currentUser) {
     try {
-      const headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
       const { data } = await api.get("/articles", {
         params: {
           user: currentUser.uid,
         },
-        headers: headers,
       });
       return data;
     } catch (error) {

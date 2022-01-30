@@ -30,8 +30,8 @@ const Dashboard = () => {
 
   const userArticles = articles.map((article) => {
     return (
-      <Card sx={{ width: "100%", maxWidth: 700 }}>
-        <CardActionArea onClick={() => navigate(`/article/create`)}>
+      <Card data-cy="current-user-articles" sx={{ width: "100%", maxWidth: 700 }}>
+        <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h3" data-cy="article-title">
               {article.title}
@@ -81,7 +81,7 @@ const Dashboard = () => {
       </Paper>
       <br></br>
       <Typography variant="h6">{`Your current articles:`}</Typography>
-      <Grid>{userArticles}</Grid>
+      <Grid >{userArticles}</Grid>
     </>
   );
 };
