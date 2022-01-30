@@ -7,8 +7,6 @@ import { Provider } from "react-redux";
 
 const store = configureStore();
 
-window.store = store;
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
