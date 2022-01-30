@@ -9,8 +9,11 @@ const Articles = {
           title: article.title,
           body: article.body,
           category: article.category,
-          image: article.image
-        },
+          image: article.image,
+          user: headers.uid
+        }
+      },
+      {
         headers: headers
       });
       return data.message;
