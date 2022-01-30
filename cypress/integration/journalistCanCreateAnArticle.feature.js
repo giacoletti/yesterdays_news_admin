@@ -9,18 +9,6 @@ describe("An article", () => {
         fixture: "create_response.json",
       }).as("articleCreateRequest");
       cy.authenticateJournalist("johnskoglund@test.com", "1234567890");
-
-      it("is expected to make an authentication request to API", () => {
-        cy.wait("@authenticateRequest")
-          .its("response.statusCode")
-          .should("eq", 200);
-      });
-
-      cy.get("[data-cy=flash-message]").should(
-        "contain.text",
-        "Welcome John Skoglund!"
-      );
-
       cy.get("[data-cy=create-article-btn]").click();
       cy.get("[data-cy=title-input]").type("Vikings ate pizza");
       cy.get("[data-cy=body-input]").type(
